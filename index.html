@@ -14,6 +14,40 @@
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+            const Contador = ({contador}) =>{
+                return <span>{contador}</span>;
+            }
+
+            const Botao = ({children}) => {
+                return <button>{children}</button>;
+            }
+
+            const Caixa = () => {
+                return(
+                    <div>
+                     <Botao>Decrementar</Botao>
+                     <Botao>Zerar</Botao>
+                     <Botao>incrementar</Botao>
+                    </div>
+                )
+            }
+
+        const App = () => {
+
+            const [contador, setarContador] = React.useState(0);
+
+            return (
+                <>
+                <Contador contador={contador} />
+                </>
+            );
+        }
+
+        ReactDom.CreateRoot(document.querySelector('#conteiner')).render('Hello World!');
+
+    </script>
     
 </body>
 </html>
