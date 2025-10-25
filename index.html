@@ -7,7 +7,7 @@
 </head>
 <body>
     
-    <div id="conteiner">
+    <div id="recipiente">
 
     </div>
 
@@ -20,16 +20,16 @@
                 return <span>{contador}</span>;
             }
 
-            const Botao = ({children}) => {
-                return <button>{children}</button>;
+            const Botao = ({children, aoClicar}) => {
+                return <button onClick={aoClicar}>{children}</button>;
             }
 
-            const Caixa = () => {
-                return(
+            const Caixa = ({contador, setarContador}) => {
+                return (
                     <div>
-                     <Botao>Decrementar</Botao>
-                     <Botao>Zerar</Botao>
-                     <Botao>incrementar</Botao>
+                     <Botao aoClicar={() => setarContador(contador - 1)}>Decrementar</Botao>
+                     <Botao aoClicar={() => setarContador(0)}>Zerar</Botao>
+                     <Botao aoClicar={() => setarContador(contador + 1)}>incrementar</Botao>
                     </div>
                 )
             }
@@ -41,11 +41,15 @@
             return (
                 <>
                 <Contador contador={contador} />
+                <Caixa
+                    contador={contador}
+                    setarContador={setarContador}
+                />
                 </>
             );
         }
 
-        ReactDom.CreateRoot(document.querySelector('#conteiner')).render('Hello World!');
+        ReactDOM.createRoot(document.querySelector('#recipiente')).render(<App/>);
 
     </script>
     
